@@ -2,7 +2,7 @@
  * @Author: hongdong.liao
  * @Date: 2021-07-09 14:12:57
  * @LastEditors: hongdong.liao
- * @LastEditTime: 2021-07-09 14:51:58
+ * @LastEditTime: 2021-07-09 15:21:43
  * @FilePath: /liaohongdong/import-html-entry/index.d.ts
  */
 /**
@@ -50,7 +50,8 @@ export default function importHTML(url: string, opts?: ImportEntryOpts | Functio
 export function importEntry(entry: Entry, opts?: ImportEntryOpts): Promise<IImportResult>;
 
 export type AppMetadata = {
-	entry: entry;
+	name: string;
+	entry: Entry;
 }
 
 export function clearCatchByUrl(app: AppMetadata): Promise<IImportResult>;
