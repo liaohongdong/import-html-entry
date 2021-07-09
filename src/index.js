@@ -331,3 +331,24 @@ export function importEntry(entry, opts = {}) {
 		throw new SyntaxError('entry scripts or styles should be array!');
 	}
 }
+
+export async function clearCatchByUrl(app) {
+	const htmlCatch = embedHTMLCache[app.entry];
+
+	if (!htmlCatch) return;
+	await htmlCatch.then(res => {
+		Object.keys(scriptCache).map(scriptK => {
+			if (scriptK.startsWith(res.assetPublicPath)) {
+				delete scriptCache[scriptK];
+			}
+		});
+		Object.keys(styleCache).map(styleK => {
+			if (scriptK.startsWith(res.assetPublicPath)) {
+				delete styleCache[styleK];
+			}
+		})
+
+		delete embedHTMLCache[url];
+		delete window[`${app.name}-app`];
+	})
+}
