@@ -1,3 +1,10 @@
+/*
+ * @Author: hongdong.liao
+ * @Date: 2021-07-09 14:12:57
+ * @LastEditors: hongdong.liao
+ * @LastEditTime: 2021-07-09 14:51:58
+ * @FilePath: /liaohongdong/import-html-entry/index.d.ts
+ */
 /**
  * @author kuitos
  * @since 2019-05-16
@@ -41,3 +48,9 @@ export function execScripts<T>(entry: string | null, scripts: string[], proxy: W
 export default function importHTML(url: string, opts?: ImportEntryOpts | Function): Promise<IImportResult>;
 
 export function importEntry(entry: Entry, opts?: ImportEntryOpts): Promise<IImportResult>;
+
+export type AppMetadata = {
+	entry: entry;
+}
+
+export function clearCatchByUrl(app: AppMetadata): Promise<IImportResult>;
